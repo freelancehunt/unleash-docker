@@ -61,6 +61,11 @@ services:
       # key from `proxy.environment.UNLEASH_PROXY_CLIENT_KEYS`
       # instead.
       INIT_CLIENT_API_TOKENS: "default:development.unleash-insecure-api-token"
+      API_KEY: ${API_KEY}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      GOOGLE_CALLBACK_URL: ${GOOGLE_CALLBACK_URL}
+      GOOGLE_ALLOWED_DOMAIN: ${GOOGLE_ALLOWED_DOMAIN}
     depends_on:
       - db
     command: node index.js
