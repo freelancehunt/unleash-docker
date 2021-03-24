@@ -2,7 +2,7 @@ FROM node:14-alpine as builder
 
 WORKDIR /unleash
 
-COPY index.js package.json package-lock.json ./
+COPY *.js package.json package-lock.json ./
 
 RUN npm ci
 
