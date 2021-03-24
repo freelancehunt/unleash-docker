@@ -6,6 +6,11 @@ services:
       - "4242:4242"
     environment:
       DATABASE_URL: postgres://postgres:unleash@db/postgres
+      API_KEY: ${API_KEY}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      GOOGLE_CALLBACK_URL: ${GOOGLE_CALLBACK_URL}
+      GOOGLE_ALLOWED_DOMAIN: ${GOOGLE_ALLOWED_DOMAIN}
     depends_on:
       - db
     command: npm run start
