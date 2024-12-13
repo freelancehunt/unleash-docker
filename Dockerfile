@@ -1,11 +1,11 @@
 ARG NODE_VERSION
-FROM node:$NODE_VERSION as builder
+FROM node:$NODE_VERSION AS builder
 
 WORKDIR /unleash
 
 COPY *.js package.json yarn.lock ./
 
-RUN yarn install --frozen-lockfile --production=true
+RUN yarn install --production=true
 
 FROM node:$NODE_VERSION
 

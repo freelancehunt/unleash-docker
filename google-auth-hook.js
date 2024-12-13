@@ -32,7 +32,6 @@ const GOOGLE_ALLOWED_DOMAIN = process.env.GOOGLE_ALLOWED_DOMAIN;
 const API_KEY = process.env.API_KEY;
 
 function enableGoogleOauth(app, config, services) {
-    const {baseUriPath} = config.server;
     const {userService} = services;
 
     passport.use(
@@ -84,25 +83,15 @@ function enableGoogleOauth(app, config, services) {
         }
         // Instruct unleash-frontend to pop-up auth dialog
         return res
-            .status('401')
+            .status(401)
             .json(
                 new AuthenticationRequired({
                     path: '/api/admin/login',
                     type: 'custom',
-                    message: `You have to identify yourself in order to use Unleash. 
-                        Click the button and follow the instructions.`,
+                    message: `You have to identify yourself in order to use Unleash. Click the button and follow the instructions.`,
                 }),
             )
             .end();
-    });
-
-    // TODO migrate to https://docs.getunleash.io/user_guide/api-token
-    app.use('/api/client', (req, res, next) => {
-        if (req.header('authorization') !== API_KEY) {
-            res.sendStatus(401);
-        } else {
-            next();
-        }
     });
 }
 
